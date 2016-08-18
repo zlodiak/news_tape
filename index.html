@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>Лента новостей</title>
+
+    <!-- Custom styles -->
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="news_tape_box" id="newsTapeBox"></div>
+
+    <script src="js/libs/jquery/jquery.2.min.js"></script>    
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/libs/backbone-min.js"></script>
+    <script src="js/libs/backbone.localStorage-min.js"></script>
+
+    <script type="text/template" id="newsUnitTpl">
+      news unit
+    </script>
+
+    <script type="text/template" id="newsTapeTpl">
+      <header class="header">
+          <a class="logo_area" href="#" target="_blank"><img class="logo" src="//static.smi2.net/static/adpreview/mobile/images/logo.png" alt=""></a>
+
+          <a class="day_news_area" href="#" target="_blank">
+              <div class="day_news_label">Перейти к новостям дня</div>
+          </a>
+      </header>
+
+      <div id="news-list" class="news_tape"></div>
+    </script>    
+
+    <script>
+      window.APP = window.APP || {};
+    </script>
+
+    <script src="js/project/config.js"></script> 
+
+    <script src="js/project/models/models.js"></script> 
+    <script src="js/project/views/newsTapeView.js"></script>     
+    <script src="js/project/collections/collections.js"></script> 
+
+    <script>
+      var app = new APP.NewsTapeView();
+    </script>
+  </body>
+</html>

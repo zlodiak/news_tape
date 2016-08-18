@@ -1,0 +1,473 @@
+/*
+INFO: 
+	project: news tape
+	browsers: opera/chrome/FF/ie9/safari + mobiles
+	width: mobile
+	columns: 
+	markup: Sergey Kalinin 08/2016 (prozaik81-2@yandex.ru)
+	use: jq, underscore, backbone
+	desc: 	
+	version 1
+*/	
+
+
+
+
+
+
+/********************************************************************************************** COMMON_STYLES */
+html, body, div, h1, h2, h3, h4, h5, h6, a, a img, p, ul, ol, li, span, fieldset , form, dl, dd, dt, table, tr, td, img{ 
+  border: none;
+  margin: 0; 
+  outline: none;  
+  padding: 0;
+  /*overflow: hidden;*/
+}
+
+html{
+  height:100%;  
+}
+
+body{ 
+  height:100%;  
+  margin: 0 auto;
+
+  font: 14px Helvetica, sans-serif;
+} 
+
+ul{
+  list-style-type: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus { outline: none; }
+
+textarea{
+  resize: none;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  zoom:1;
+}
+
+.clear{
+  clear: both;
+} 
+  
+.hide{
+  display: none;
+}
+
+input::-webkit-input-placeholder {
+  color: #0096ef;
+}
+
+input:-moz-placeholder {
+  color: #0096ef;
+}
+
+/********************************************************************************************* GLOBAL_layout */
+
+/********************************************************************************************* header */
+/* 667 horiz iphone6 */  
+.header{
+  background: #2c9ed5;
+  border-bottom: 1px solid #fff;
+  position: relative;  
+  overflow: hidden;
+}
+
+  .logo_area{
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 138px;
+    height: 56px;
+    overflow: hidden;
+  }
+
+    .logo{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 119px;     
+    }
+
+  .day_news_area{
+    margin-left: 138px;
+    border-left: 1px solid #9fd4ed;
+    height: 56px;
+    display: block;
+    overflow: hidden;
+
+    text-decoration: none;
+    color: #fff;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 19px;   
+    text-align: center;   
+    line-height: 56px;
+  }
+
+    .day_news_label{
+      padding: 0px 5px 0;
+
+    }
+
+/* 568 horiz iphone5 */    
+@media (max-width: 568px) {
+  .logo_area{
+    width: 100px;
+    height: 41px;
+  }
+
+  .logo{
+    width: 87px;     
+  }
+
+  .day_news_area{
+    margin-left: 100px;
+    height: 41px;
+
+    font-size: 14px;    
+    line-height: 41px;
+  }
+
+}
+
+/* 375 vert iphone6 */    
+@media (max-width: 375px) {
+  .logo_area{
+    width: 117px;
+    height: 47px;
+  }
+
+  .logo{
+    width: 100px;     
+  }
+
+  .day_news_area{
+    margin-left: 117px;
+    height: 47px;
+
+    font-size: 16px;    
+    line-height: 47px;
+  }
+
+}
+
+/* 320 vert iphone5 */    
+@media (max-width: 320px) {
+  .logo{
+    width: 101px;     
+  }
+}
+
+/********************************************************************************************* news_main */
+/* 667 horiz iphone6 */  
+.news_main{
+  position: relative;
+  background: #3fae49;
+  overflow: hidden;
+}
+
+  .news_main_teaser_area{
+    padding: 16px 144px 0 16px;  
+    position: relative;
+    z-index: 100;  
+    overflow: hidden;
+
+    color: #fff;
+    font-family: 'PT Sans', sans-serif;        
+  }
+
+    .news_main_teaser_area .news_main_title{
+      font-weight: bold;
+      font-size: 22px;  
+
+      margin-bottom: 8px;
+      overflow: hidden;
+      max-height: 28px;
+    }
+
+    .news_main_teaser_area .news_main_short_text{
+      font-weight: normal;
+      line-height: 18px;
+
+      margin-bottom: 19px;
+      overflow: hidden;
+      max-height: 36px;
+    }
+
+    .news_main_teaser_area .news_main_more_button:after{
+      position: absolute;
+      z-index: 100;
+      right: -53px;
+      top: 0px;
+      width: 16px;
+      height: 0px;
+      border: 21px solid transparent; 
+      border-left: 16px solid #fff; 
+
+      content: '';
+    }
+
+    .news_main_teaser_area .news_main_more_button{
+      background: #fff;
+      margin-bottom: 16px;
+      height: 42px;
+      position: relative;
+      display: block;
+      cursor: pointer;
+
+      color: #3fae49;
+      line-height: 42px;
+      font-size: 15px; 
+      text-align: center;   
+      text-decoration: none;   
+    }
+
+  .news_main_teaser_img_area{
+    width: 144px;
+    min-height: 170px;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+  }      
+
+/* 568 horiz iphone5 */  
+@media (max-width: 568px) {
+  .news_main_teaser_area{
+    padding: 14px 105px 0 13px;  
+  }
+
+    .news_main_teaser_area .news_main_title{
+      font-size: 15px;  
+
+      margin-bottom: 3px;
+      max-height: 19px;
+    }  
+
+    .news_main_teaser_area .news_main_short_text{
+      font-size: 12px;
+      line-height: 16px;
+
+      margin-bottom: 10px;
+      max-height: 32px;
+    }    
+
+    .news_main_teaser_area .news_main_more_button:after{
+      right: -47px;
+      border: 15px solid transparent; 
+      border-left: 16px solid #fff; 
+    }
+
+    .news_main_teaser_area .news_main_more_button{
+      margin-bottom: 13px;
+      height: 30px;
+      position: relative;
+
+      line-height: 30px;
+      font-size: 15px;  
+    }
+
+  .news_main_teaser_img_area{
+    width: 105px;
+    min-height: 155px;
+  } 
+}
+
+/* 375 vert iphone6 */   
+@media (max-width: 375px) {
+  .news_main_teaser_area{
+    padding: 14px 123px 0 13px;  
+  }
+
+    .news_main_teaser_area .news_main_title{
+      font-size: 20px;
+      line-height: 24px;
+
+      margin-bottom: 7px;
+      max-height: 75px;
+    }  
+
+    .news_main_teaser_area .news_main_short_text{
+      display: none;
+    }    
+
+    .news_main_teaser_area .news_main_more_button:after{
+      right: -50px;
+      border: 18px solid transparent; 
+      border-left: 16px solid #fff; 
+    }
+
+    .news_main_teaser_area .news_main_more_button{
+      margin-bottom: 14px;
+      height: 36px;
+      position: relative;
+
+      line-height: 36px;
+      font-size: 15px;  
+    }
+
+  .news_main_teaser_img_area{
+    width: 123px;
+    min-height: 155px;
+  } 
+}
+
+/* 320 vert iphone5 */    
+@media (max-width: 320px) {
+  .news_main_teaser_area{
+    padding: 16px 123px 0 13px;  
+  }
+
+    .news_main_teaser_area .news_main_title{
+      font-size: 19px;
+      line-height: 23px;
+
+      margin-bottom: 9px;
+      max-height: 69px;
+    }  
+
+  .news_main_teaser_area .news_main_more_button {
+      margin-bottom: 14px;
+  }     
+
+  .news_main_teaser_img_area{
+    min-height: 150px;
+  }   
+}
+
+
+/********************************************************************************************* news */
+/* 667 horiz iphone6 */  
+.news{
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  display: block;
+
+  text-decoration: none;
+}
+
+  .news_teaser_area{
+    padding: 12px 154px 0 16px;  
+    position: relative;
+    z-index: 100;  
+    overflow: hidden;
+    border-top: 1px solid #f7f7f7;
+
+    color: #252525;
+    font-family: 'PT Sans', sans-serif;        
+  }
+
+    .news_title{
+      font-weight: bold;
+      font-size: 22px;  
+      line-height: 25px;
+
+      margin-bottom: 5px;
+      overflow: hidden;
+      max-height: 56px;
+    }
+
+    .news_short_text{
+      font-weight: normal;
+      line-height: 20px;
+      color: #545454;
+      font-size: 16px;
+
+      margin-bottom: 19px;
+      overflow: hidden;
+      max-height: 80px;
+    }
+
+  .news_teaser_img_area{
+    width: 144px;
+    min-height: 170px;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+  } 
+
+/* 568 horiz iphone5 */    
+@media (max-width: 568px) {
+    .news_teaser_area{
+      padding: 9px 115px 0 16px;        
+    }
+
+      .news_title{
+        line-height: 16px;
+        font-size: 18px;  
+
+        margin-bottom: 5px;
+        max-height: 56px;
+      }
+
+      .news_short_text{
+        line-height: 15px;
+        font-size: 12px;
+
+        margin-bottom: 15px;
+        max-height: 46px;
+      }
+
+    .news_teaser_img_area{
+      width: 105px;
+      min-height: 114px;
+    }   
+}
+
+/* 375 vert iphone6 */    
+@media (max-width: 375px) {
+    .news_teaser_area{
+      padding: 9px 143px 0 16px;        
+    }
+
+      .news_title{
+        line-height: 20px;
+        font-size: 15px;  
+
+        margin-bottom: 8px;
+        max-height: 60px;
+      }
+
+      .news_short_text{
+        line-height: 17px;
+        font-size: 14px;
+
+        margin-bottom: 15px;
+        max-height: 68px;
+      }
+
+    .news_teaser_img_area{
+      width: 123px;
+      min-height: 150px;
+    }   
+}
+
+/* 375 vert iphone6 */    
+@media (max-width: 375px) {
+
+}
+
+
+
+
+/****************************************************************************** GLOBAL_layout */
+
+
+
+
+/****************************************************************************** GLOBAL_blocks: footer */
