@@ -64,13 +64,43 @@ APP.NewsUnitView = Backbone.View.extend({
   },
 
   events:{
-    'click .news': 'displayModal'
+    'click .news': 'openModal'
   },  
 
-  displayModal: function() {
+  openModal: function() {
     console.log('mod');
+
+    var newsModalView = APP.NewsModalView(model);
+    $('body').append(newsModalView.render().el);
   }
 
 });
 
+
+APP.NewsModalView = Backbone.View.extend({  
+
+  initialize: function(model) {   
+    this.model = model.model;
+  },
+
+  template: _.template($('#newsModalTpl').html()),
+
+  render: function () {  
+    this.$el.html(this.template({
+      title: this.model.get('title'),
+      description: this.model.get('description'),
+      poster: this.model.get('poster')
+    }));    
+    return this;
+  },
+
+  events:{
+    'click': 'closeModal'
+  },  
+
+  closeModal: function() {
+    console.log('clo');
+  }
+
+});
 
