@@ -17,8 +17,9 @@ APP.NewsTapeView = Backbone.View.extend({
   },
 
   _createNewsUnits: function () {  
-    _.each(this.collection, function (news) {
-      $(this.el).append(new APP.NewsUnitView({model:news}).render().el);
+    this.collection.each(function (news) {    
+      var newsUnitView = new APP.NewsUnitView(news);      
+      $(this.el).append(newsUnitView.render().el);
     }, this);
   },
 
@@ -48,10 +49,18 @@ APP.NewsTapeView = Backbone.View.extend({
 
 APP.NewsUnitView = Backbone.View.extend({  
 
+  initialize: function(model) {   
+    this.model = model;
+  },
+
   template: _.template($('#newsUnitTpl').html()),
 
   render: function () {  
-    this.$el.html(this.template());    
+    this.$el.html(this.template({
+      title: this.model.get('title'),
+      description: this.model.get('description'),
+      poster: this.model.get('poster')
+    }));    
     return this;
   }
 
