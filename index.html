@@ -22,19 +22,28 @@
     <script src="js/libs/backbone.localStorage-min.js"></script>
 
     <script type="text/template" id="newsUnitTpl">
-      news unit
+      <a class="news" href="#" target="_blank">
+        <div class="news_teaser_area">
+          <div class="news_title">Ford Focus с выгодой. Воспользуйтесь специальным предложением от Ford</div>
+          <div class="news_short_text">Рассчитайте стоимость Вашего автомобиля.</div>
+        </div>
+
+        <div class="news_teaser_img_area img-area" style="min-height: 92px; background: url(&quot;//static7.smi2.net/img/200x156/3219987.jpeg&quot;) center center / cover no-repeat;"></div>
+      </a>
     </script>
 
     <script type="text/template" id="newsTapeTpl">
       <header class="header">
-          <a class="logo_area" href="#" target="_blank"><img class="logo" src="//static.smi2.net/static/adpreview/mobile/images/logo.png" alt=""></a>
+          <a class="logo_area" href="#" target="_blank">
+            <img class="logo" src="//static.smi2.net/static/adpreview/mobile/images/logo.png" alt="">
+          </a>
 
           <a class="day_news_area" href="#" target="_blank">
-              <div class="day_news_label">Перейти к новостям дня</div>
+            <div class="day_news_label">Перейти к новостям дня</div>
           </a>
       </header>
 
-      <div id="news-list" class="news_tape"></div>
+      <div id="newsList" class="news_list"></div>
     </script>    
 
     <script>
@@ -48,7 +57,7 @@
     <script src="js/project/collections/collections.js"></script> 
 
     <script>
-      var app = new APP.NewsTapeView();
+      var app = new APP.NewsTapeView({el: '#newsTapeBox'});
     </script>
   </body>
 </html>

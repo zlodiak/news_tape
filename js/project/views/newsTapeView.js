@@ -1,32 +1,8 @@
 APP.NewsTapeView = Backbone.View.extend({  
 
   initialize: function() {   
-    var self = this;
-
     this.collection = new APP.NewsModelsCollection();  
-
-
-    $.each(APP.CONFIG.values, function(key, val) {    
-/*      console.log(val.title);
-      console.log(val.description);
-      console.log(val.poster);*/
-
-      var newsModel = new APP.NewsModel({
-        title: val.title,
-        description: val.description,
-        poster: val.poster
-      });
-
-      self.collection.add(newsModel);
-
-      new APP.NewsUnitView({model: newsModel});
-    });
-
-    console.log(this.collection);
-
-
-
-
+    this._fillCollection();
         
     this.render();
   },    
@@ -35,14 +11,36 @@ APP.NewsTapeView = Backbone.View.extend({
 
   render: function () {  
     this.$el.html(this.template());    
-    $('#newsTapeBox').append(this.template);
-
-/*    _.each(this.model.models, function (wine) {
-        $(this.el).append(new WineListItemView({model:wine}).render().el);
-    }, this);  */  
+    this._createNewsUnits();
 
     return this;
-  }
+  },
+
+  _createNewsUnits: function () {  
+    _.each(this.collection, function (news) {
+      $(this.el).append(new APP.NewsUnitView({model:news}).render().el);
+    }, this);
+  },
+
+  _fillCollection: function () {  
+    var self = this;
+
+    $.each(APP.CONFIG.values, function(key, val) {    
+      //console.log(val.title);
+      //console.log(val.description);
+      //console.log(val.poster);
+
+      var newsModel = new APP.NewsModel({
+        title: val.title,
+        description: val.description,
+        poster: val.poster
+      });
+
+      self.collection.add(newsModel);
+    });
+
+    console.log(this.collection);
+  }  
 
 });
 
@@ -50,18 +48,10 @@ APP.NewsTapeView = Backbone.View.extend({
 
 APP.NewsUnitView = Backbone.View.extend({  
 
-  initialize: function(model) {   
-    //this.model = new APP.NewsModel();     
-
-    this.render();
-  },    
-
   template: _.template($('#newsUnitTpl').html()),
 
   render: function () {  
     this.$el.html(this.template());    
-    this.$el.append(this.template);
-
     return this;
   }
 
