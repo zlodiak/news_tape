@@ -18,7 +18,7 @@ APP.NewsTapeView = Backbone.View.extend({
 
   _createNewsUnits: function () {  
     this.collection.each(function (news) {    
-      var newsUnitView = new APP.NewsUnitView(news);      
+      var newsUnitView = new APP.NewsUnitView({model: news});      
       $(this.el).append(newsUnitView.render().el);
     }, this);
   },
@@ -27,9 +27,9 @@ APP.NewsTapeView = Backbone.View.extend({
     var self = this;
 
     $.each(APP.CONFIG.values, function(key, val) {    
-      //console.log(val.title);
-      //console.log(val.description);
-      //console.log(val.poster);
+      // console.log(val.title);
+      // console.log(val.description);
+      // console.log(val.poster);
 
       var newsModel = new APP.NewsModel({
         title: val.title,
@@ -40,17 +40,16 @@ APP.NewsTapeView = Backbone.View.extend({
       self.collection.add(newsModel);
     });
 
-    console.log(this.collection);
+    // console.log(this.collection);
   }  
 
 });
 
 
-
 APP.NewsUnitView = Backbone.View.extend({  
 
   initialize: function(model) {   
-    this.model = model;
+    this.model = model.model;
   },
 
   template: _.template($('#newsUnitTpl').html()),
@@ -62,6 +61,14 @@ APP.NewsUnitView = Backbone.View.extend({
       poster: this.model.get('poster')
     }));    
     return this;
+  },
+
+  events:{
+    'click .news': 'displayModal'
+  },  
+
+  displayModal: function() {
+    console.log('mod');
   }
 
 });

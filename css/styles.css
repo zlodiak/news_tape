@@ -355,6 +355,7 @@ input:-moz-placeholder {
   background: #fff;
   overflow: hidden;
   display: block;
+  cursor: pointer;
 
   text-decoration: none;
 }
