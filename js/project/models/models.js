@@ -4,6 +4,6 @@ APP.NewsModel = Backbone.Model.extend({
     "title": "",
     "poster": "",
     "description":"",
-    "likeState": false
+    "likeState": true
   }
 });  

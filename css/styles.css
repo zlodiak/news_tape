@@ -64,6 +64,10 @@ textarea{
   display: none;
 }
 
+.show{
+  display: block;
+}
+
 input::-webkit-input-placeholder {
   color: #0096ef;
 }
@@ -507,6 +511,7 @@ input:-moz-placeholder {
     top: 0;
     bottom: 0;
     z-index: 200;
+    display: inline;
 }
 #modalwindow {
     z-index: 300;
@@ -525,6 +530,10 @@ input:-moz-placeholder {
   overflow: auto;
   max-height: 500px;
 }
+
+  .modalwindow .close_btn:hover{
+    text-decoration: underline;
+  }
 
   .modalwindow .close_btn{
     position: absolute;

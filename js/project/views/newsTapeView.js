@@ -80,7 +80,6 @@ APP.NewsUnitView = Backbone.View.extend({
 
   cutText: function(text, symbolsCnt) {
     var cutText = text.substring(0, symbolsCnt);
-
     cutText += '...';
 
     return cutText;
@@ -112,12 +111,6 @@ APP.NewsModalView = Backbone.View.extend({
     this.model = model;
     _block = null;
     _win = null;   
-
-    console.log(this.$el)
-
-/*    $('#likeElem').on('click', function() {
-      console.log('le')
-    }); */
   },
 
   template: _.template($('#newsModalTpl').html()),
@@ -145,37 +138,31 @@ APP.NewsModalView = Backbone.View.extend({
     return likeState;
   },
 
-/*  events: {
-    'click #likeElem ': 'toggleLikeState'
-  },   */ 
-
   toggleLikeState : function() {  
     var state = this.model.get('likeState') ? false : true;
     this.model.set({likeState: state});
-
-    console.log(this.model.get('likeState'))
   },
 
-  initBlock: function() {
+  initOverlayElem: function() {
     var self = this;
 
     var _block = document.getElementById('blockscreen'); 
 
     if (!_block) {
-        var parent = document.getElementsByTagName('body')[0],
-            obj = parent.firstChild; 
+      var parent = document.getElementsByTagName('body')[0],
+          obj = parent.firstChild; 
 
-        _block = document.createElement('div'); 
-        _block.id = 'blockscreen'; 
-        parent.insertBefore(_block, obj);
+      _block = document.createElement('div'); 
+      _block.id = 'blockscreen'; 
+      parent.insertBefore(_block, obj);
 
-        _block.onclick = function() { self.close() };         
+      _block.onclick = function() { self.close() };         
     }
 
     _block.style.display = 'inline';     
   },
 
-  initWin: function(width, html) {
+  initModalElem: function(width, html) {
     var self = this;
 
     _win = document.getElementById('modalwindow'); 
@@ -184,8 +171,7 @@ APP.NewsModalView = Backbone.View.extend({
         var parent = document.getElementsByTagName('body')[0];
         var obj = parent.firstChild;
         _win = document.createElement('div');
-        _win.id = 'modalwindow';
-        _win.style.padding = '0 0 5px 0';      
+        _win.id = 'modalwindow';    
         parent.insertBefore(_win, obj);
     }
 
@@ -215,8 +201,8 @@ APP.NewsModalView = Backbone.View.extend({
   },
 
   show: function(html) {
-    this.initBlock();
-    this.initWin(html);
+    this.initOverlayElem();
+    this.initModalElem(html);
   }
 
 });
