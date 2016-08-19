@@ -22,7 +22,15 @@
     <script src="js/libs/backbone.localStorage-min.js"></script>
 
     <script type="text/template" id="newsModalTpl">
-    mm
+      <div class="modalwindow">
+        <div class="close_btn" id="closeBtn">Закрыть</div>
+
+        <div class="content_modal">
+          <div class="title"><%= title %></div>
+          <img class="poster" src="<%= poster %>" alt="">
+          <div class="description"><%= description %></div>
+        </div>
+      </div>
     </script>
 
     <script type="text/template" id="newsUnitTpl">

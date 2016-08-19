@@ -94,7 +94,7 @@ APP.NewsModalView = Backbone.View.extend({
   template: _.template($('#newsModalTpl').html()),
 
   render: function () {  
-    this.$el.html(this.template({
+    $('#modalwindow').html(this.template({
       title: this.model.get('title'),
       description: this.model.get('description'),
       poster: this.model.get('poster')
@@ -130,8 +130,14 @@ APP.NewsModalView = Backbone.View.extend({
         var obj = parent.firstChild;
         _win = document.createElement('div');
         _win.id = 'modalwindow';
-        _win.style.padding = '0 0 5px 0';
+        _win.style.padding = '0 0 5px 0';      
         parent.insertBefore(_win, obj);
+
+
+
+
+        
+
     }
     _win.style.width = width + 'px'; //Установим ширину окна
     _win.style.display = 'inline'; //Зададим CSS-свойство
@@ -141,11 +147,13 @@ APP.NewsModalView = Backbone.View.extend({
     //Установим позицию по центру экрана
 
     _win.style.left = '50%'; //Позиция по горизонтали
-    _win.style.top = '50%'; //Позиция по вертикали
+    _win.style.top = '10%'; //Позиция по вертикали
 
     //Выравнивание по центру путем задания отрицательных отступов
     _win.style.marginTop = -(_win.offsetHeight / 2) + 'px'; 
     _win.style.marginLeft = -(width / 2) + 'px';
+
+    this.render();
   },
 
   close: function() { 
