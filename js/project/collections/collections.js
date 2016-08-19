@@ -1,3 +1,3 @@
 APP.NewsModelsCollection = Backbone.Collection.extend({
-    model: APP.NewsModel
+  model: APP.NewsModel
 });
