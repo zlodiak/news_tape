@@ -115,14 +115,14 @@ APP.NewsModalView = Backbone.View.extend({
         _block = document.createElement('div'); //Создаем элемент div
         _block.id = 'blockscreen'; //Присваиваем ему наш ID
         parent.insertBefore(_block, obj); //Вставляем в начало
-        _block.onclick = function() { 
-          self.close(); 
-        } //Добавим обработчик события по нажатию на блокирующий экран - закрыть модальное окно.
+        _block.onclick = function() { self.close() };         
     }
     _block.style.display = 'inline'; //Установим CSS-свойство        
   },
 
   initWin: function(width, html) {
+    var self = this;
+
     _win = document.getElementById('modalwindow'); //Получаем наше диалоговое окно по ID
     //Если оно не определено, то также создадим его по аналогии
     if (!_win) {
@@ -154,6 +154,8 @@ APP.NewsModalView = Backbone.View.extend({
     _win.style.marginLeft = -(width / 2) + 'px';
 
     this.render();
+
+    document.getElementById('closeBtn').onclick = function() { self.close() }; 
   },
 
   close: function() { 
