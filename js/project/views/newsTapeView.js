@@ -86,14 +86,12 @@ APP.NewsUnitView = Backbone.View.extend({
     return cutText;
   },
 
-  openModal: function() { console.log('openModal')
+  openModal: function() { 
     var newsModalView = new APP.NewsModalView(this.model),
         widthWindow = window.innerWidth,
         widthModal,
-        maxWidth = 550,
+        maxWidth = 750,
         paddingsWidth = 40;
-
-    console.log(widthWindow);
 
     if(widthWindow > 768) {
       widthModal = maxWidth;
@@ -111,11 +109,15 @@ APP.NewsUnitView = Backbone.View.extend({
 APP.NewsModalView = Backbone.View.extend({  
 
   initialize: function(model) {   
-    var self = this;
-
     this.model = model;
     _block = null;
-    _win = null;    
+    _win = null;   
+
+    console.log(this.$el)
+
+/*    $('#likeElem').on('click', function() {
+      console.log('le')
+    }); */
   },
 
   template: _.template($('#newsModalTpl').html()),
@@ -124,10 +126,34 @@ APP.NewsModalView = Backbone.View.extend({
     $('#modalwindow').html(this.template({
       title: this.model.get('title'),
       description: this.model.get('description'),
-      poster: this.model.get('poster')
+      poster: this.model.get('poster'),
+      likeState: this.getLikeClass()
     }));  
 
     return this;
+  },
+
+  getLikeClass: function() {
+    var likeState;
+
+    if(this.model.get('likeState')) {
+      likeState = 'active';
+    } else {
+      likeState = 'unactive';
+    };
+
+    return likeState;
+  },
+
+/*  events: {
+    'click #likeElem ': 'toggleLikeState'
+  },   */ 
+
+  toggleLikeState : function() {  
+    var state = this.model.get('likeState') ? false : true;
+    this.model.set({likeState: state});
+
+    console.log(this.model.get('likeState'))
   },
 
   initBlock: function() {
@@ -169,7 +195,7 @@ APP.NewsModalView = Backbone.View.extend({
     _win.innerHTML = html; 
 
     _win.style.left = '50%'; 
-    _win.style.top = '10%'; 
+    _win.style.top = '5%'; 
 
     _win.style.marginTop = -(_win.offsetHeight / 2) + 'px'; 
     _win.style.marginLeft = -(width / 2) + 'px';
@@ -177,9 +203,13 @@ APP.NewsModalView = Backbone.View.extend({
     this.render();
 
     document.getElementById('closeBtn').onclick = function() { self.close() }; 
+    document.getElementById('likeElem').onclick = function() { 
+      self.toggleLikeState(); 
+      self.show();
+    }; 
   },
 
-  close: function() { console.log('close')
+  close: function() { 
     document.getElementById('blockscreen').style.display = 'none';
     document.getElementById('modalwindow').style.display = 'none';        
   },

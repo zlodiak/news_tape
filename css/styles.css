@@ -81,7 +81,6 @@ input:-moz-placeholder {
   border-bottom: 1px solid #fff;
   position: relative;  
   overflow: hidden;
-  padding-right: 15px;
 }
 
   .logo_area{
@@ -92,12 +91,14 @@ input:-moz-placeholder {
     width: 138px;
     height: 56px;
     overflow: hidden;
+
+    text-align: center;
   }
 
     .logo{
       position: absolute;
-      right: 0;
-      bottom: 0;
+      right: 7px;
+      bottom: 5px;
       display: block;
       width: 119px;     
     }
@@ -124,9 +125,8 @@ input:-moz-placeholder {
 
     .filter_title_field{
       display: block;
-          margin-top: 19px;
-          margin-left: 15px;
-
+      margin-top: 19px;
+      margin-left: 15px;
     }
 
 /* 568 horiz iphone5 */    
@@ -148,6 +148,11 @@ input:-moz-placeholder {
     line-height: 41px;
   }
 
+  .filter_title_field{
+    margin-top: 10px;
+    margin-left: 10px;
+  }  
+
 }
 
 /* 375 vert iphone6 */    
@@ -168,6 +173,12 @@ input:-moz-placeholder {
     font-size: 16px;    
     line-height: 47px;
   }
+
+
+  .filter_title_field{
+    margin-top: 13px;
+    margin-left: 10px;
+  }    
 
 }
 
@@ -511,6 +522,8 @@ input:-moz-placeholder {
   padding: 50px 20px 20px;
   position: relative;
   margin: 0 auto;
+  overflow: auto;
+  max-height: 500px;
 }
 
   .modalwindow .close_btn{
@@ -527,22 +540,50 @@ input:-moz-placeholder {
 
   }
 
-  .modalwindow .title{
-    font-weight: bold;
-    font-size: 120%;
-    padding-bottom: 10px;
+    .modalwindow .title{
+      font-weight: bold;
+      font-size: 120%;
+      padding-bottom: 10px;
+    }
+
+    .modalwindow .description{
+
+    }
+
+    .modalwindow .poster{
+      display: block;
+      width: 50%;
+      height: auto;
+      margin-bottom: 10px;
+      margin-right: 20px;
+      float: left;
+    }
+
+  .modalwindow .extras_modal{
+    padding-top: 40px;
   }
 
-  .modalwindow .description{
+    .extras_modal .like_elem{
+      width: 50px;
+      height: 50px;
+      background: url('../images/misc/like_sprite.png') no-repeat;
+      cursor: pointer;
+    }
 
+    .extras_modal .like_elem.unactive{
+      background-position: -8px top;
+    }
+
+    .extras_modal .like_elem.active{
+      background-position: -76px top;
+    }
+
+
+/* 568 horiz iphone5 */    
+  @media (max-width: 568px) {
+    .modalwindow .poster{
+      width: 100%;
+      margin-right: 0px;
+      float: none;
+    }
   }
-
-  .modalwindow .poster{
-    display: block;
-    width: 50%;
-    height: auto;
-    margin-bottom: 10px;
-    margin-right: 20px;
-    float: left;
-  }
-
