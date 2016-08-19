@@ -31,6 +31,7 @@ html{
 body{ 
   height:100%;  
   margin: 0 auto;
+  position: relative;
 
   font: 14px Helvetica, sans-serif;
 } 
@@ -481,10 +482,10 @@ input:-moz-placeholder {
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 10;
+    z-index: 200;
 }
 #modalwindow {
-    z-index: 11;
+    z-index: 300;
     background: #fff;
     padding: 5px;
     border-radius: 5px;
