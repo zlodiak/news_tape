@@ -70,7 +70,7 @@ APP.NewsUnitView = Backbone.View.extend({
   openModal: function() {
     console.log('mod');
 
-    var newsModalView = APP.NewsModalView(model);
+    var newsModalView = new APP.NewsModalView(this.model);
     $('body').append(newsModalView.render().el);
   }
 
@@ -80,7 +80,7 @@ APP.NewsUnitView = Backbone.View.extend({
 APP.NewsModalView = Backbone.View.extend({  
 
   initialize: function(model) {   
-    this.model = model.model;
+    this.model = model;
   },
 
   template: _.template($('#newsModalTpl').html()),
