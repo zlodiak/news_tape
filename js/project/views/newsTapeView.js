@@ -61,9 +61,10 @@ APP.NewsUnitView = Backbone.View.extend({
   render: function () {  
     this.$el.html(this.template({
       title: this.model.get('title'),
-      description: this.model.get('description'),
+      description: this.cutText(this.model.get('description'), 25),
       poster: this.model.get('poster')
-    }));    
+    }));   
+
     return this;
   },
 
@@ -71,6 +72,14 @@ APP.NewsUnitView = Backbone.View.extend({
     'click': function() {   
       self.openModal();
     }
+  },
+
+  cutText: function(text, symbolsCnt) {
+    var cutText = text.substring(0, symbolsCnt);
+
+    cutText += '...';
+
+    return cutText;
   },
 
   openModal: function() {
