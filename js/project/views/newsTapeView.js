@@ -16,6 +16,13 @@ APP.NewsTapeView = Backbone.View.extend({
     return this;
   },
 
+  events: {
+    'click #filterTitleField': function(e) {   
+      e.preventDefault()
+      console.log('filterTitleField')
+    }
+  },  
+
   _createNewsUnits: function () {  
     this.collection.each(function (news) {    
       var newsUnitView = new APP.NewsUnitView({model: news});      
@@ -80,7 +87,7 @@ APP.NewsUnitView = Backbone.View.extend({
     return cutText;
   },
 
-  openModal: function() {
+  openModal: function() { console.log('openModal')
     var newsModalView = new APP.NewsModalView(this.model);
     newsModalView.show(555, ['dfsdsdf']);
   }
@@ -159,7 +166,7 @@ APP.NewsModalView = Backbone.View.extend({
     document.getElementById('closeBtn').onclick = function() { self.close() }; 
   },
 
-  close: function() { 
+  close: function() { console.log('close')
     document.getElementById('blockscreen').style.display = 'none';
     document.getElementById('modalwindow').style.display = 'none';        
   },

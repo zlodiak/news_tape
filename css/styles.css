@@ -81,6 +81,7 @@ input:-moz-placeholder {
   border-bottom: 1px solid #fff;
   position: relative;  
   overflow: hidden;
+  padding-right: 15px;
 }
 
   .logo_area{
@@ -112,12 +113,19 @@ input:-moz-placeholder {
     color: #fff;
     font-family: 'PT Sans', sans-serif;
     font-size: 19px;   
-    text-align: center;   
+    text-align: right;   
     line-height: 56px;
   }
 
     .day_news_label{
       padding: 0px 5px 0;
+
+    }
+
+    .filter_title_field{
+      display: block;
+          margin-top: 19px;
+          margin-left: 15px;
 
     }
 
