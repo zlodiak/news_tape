@@ -68,7 +68,7 @@ APP.NewsUnitView = Backbone.View.extend({
   },
 
   events: {
-    'click': function() {
+    'click': function() {   
       self.openModal();
     }
   },
@@ -95,6 +95,7 @@ APP.NewsModalView = Backbone.View.extend({
 
   render: function () {  
     $('#modalwindow').html(this.template({
+      id: this.model.cid,
       title: this.model.get('title'),
       description: this.model.get('description'),
       poster: this.model.get('poster')
@@ -115,7 +116,7 @@ APP.NewsModalView = Backbone.View.extend({
         _block = document.createElement('div'); 
         _block.id = 'blockscreen'; 
         parent.insertBefore(_block, obj);
-         
+
         _block.onclick = function() { self.close() };         
     }
 
