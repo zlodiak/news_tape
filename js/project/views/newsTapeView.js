@@ -106,25 +106,27 @@ APP.NewsModalView = Backbone.View.extend({
   initBlock: function() {
     var self = this;
 
-    var _block = document.getElementById('blockscreen'); //Получаем наш блокирующий фон по ID
+    var _block = document.getElementById('blockscreen'); 
 
-    //Если он не определен, то создадим его
     if (!_block) {
-        var parent = document.getElementsByTagName('body')[0]; //Получим первый элемент тега body
-        var obj = parent.firstChild; //Для того, чтобы вставить наш блокирующий фон в самое начало тега body
-        _block = document.createElement('div'); //Создаем элемент div
-        _block.id = 'blockscreen'; //Присваиваем ему наш ID
-        parent.insertBefore(_block, obj); //Вставляем в начало
+        var parent = document.getElementsByTagName('body')[0],
+            obj = parent.firstChild; 
+
+        _block = document.createElement('div'); 
+        _block.id = 'blockscreen'; 
+        parent.insertBefore(_block, obj);
+         
         _block.onclick = function() { self.close() };         
     }
-    _block.style.display = 'inline'; //Установим CSS-свойство        
+
+    _block.style.display = 'inline';     
   },
 
   initWin: function(width, html) {
     var self = this;
 
-    _win = document.getElementById('modalwindow'); //Получаем наше диалоговое окно по ID
-    //Если оно не определено, то также создадим его по аналогии
+    _win = document.getElementById('modalwindow'); 
+
     if (!_win) {
         var parent = document.getElementsByTagName('body')[0];
         var obj = parent.firstChild;
@@ -132,24 +134,16 @@ APP.NewsModalView = Backbone.View.extend({
         _win.id = 'modalwindow';
         _win.style.padding = '0 0 5px 0';      
         parent.insertBefore(_win, obj);
-
-
-
-
-        
-
     }
-    _win.style.width = width + 'px'; //Установим ширину окна
-    _win.style.display = 'inline'; //Зададим CSS-свойство
-    
-    _win.innerHTML = html; //Добавим нужный HTML-текст в наше диалоговое окно
-    
-    //Установим позицию по центру экрана
 
-    _win.style.left = '50%'; //Позиция по горизонтали
-    _win.style.top = '10%'; //Позиция по вертикали
+    _win.style.width = width + 'px'; 
+    _win.style.display = 'inline'; 
+    
+    _win.innerHTML = html; 
 
-    //Выравнивание по центру путем задания отрицательных отступов
+    _win.style.left = '50%'; 
+    _win.style.top = '10%'; 
+
     _win.style.marginTop = -(_win.offsetHeight / 2) + 'px'; 
     _win.style.marginLeft = -(width / 2) + 'px';
 
