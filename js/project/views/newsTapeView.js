@@ -19,7 +19,7 @@ APP.NewsTapeView = Backbone.View.extend({
   _createNewsUnits: function () {  
     this.collection.each(function (news) {    
       var newsUnitView = new APP.NewsUnitView({model: news});      
-      $(this.el).append(newsUnitView.render().el);
+      $(this.$('#newsList')).append(newsUnitView.render().el);
     }, this);
   },
 
@@ -51,6 +51,8 @@ APP.NewsUnitView = Backbone.View.extend({
   initialize: function(model) {   
     this.model = model.model;
   },
+
+  className: 'news',
 
   template: _.template($('#newsUnitTpl').html()),
 
@@ -97,8 +99,14 @@ APP.NewsModalView = Backbone.View.extend({
     return this;
   },
 
+  events:{
+    'click #blockscreen': 'close'
+  },  
+
+
+
       initBlock: function() {
-              _block = document.getElementById('blockscreen'); //Получаем наш блокирующий фон по ID
+              var _block = document.getElementById('blockscreen'); //Получаем наш блокирующий фон по ID
 
               //Если он не определен, то создадим его
               if (!_block) {
@@ -107,7 +115,9 @@ APP.NewsModalView = Backbone.View.extend({
                   _block = document.createElement('div'); //Создаем элемент div
                   _block.id = 'blockscreen'; //Присваиваем ему наш ID
                   parent.insertBefore(_block, obj); //Вставляем в начало
-                  _block.onclick = function() { this.close(); } //Добавим обработчик события по нажатию на блокирующий экран - закрыть модальное окно.
+                  _block.onclick = function() { console.log('close 1')
+                    //this.close(); 
+                  } //Добавим обработчик события по нажатию на блокирующий экран - закрыть модальное окно.
               }
               _block.style.display = 'inline'; //Установим CSS-свойство        
           },
@@ -138,7 +148,7 @@ APP.NewsModalView = Backbone.View.extend({
               _win.style.marginLeft = -(width / 2) + 'px';
           },
 
-       close: function() {
+       close: function() {  console.log('close 2')
               document.getElementById('blockscreen').style.display = 'none';
               document.getElementById('modalwindow').style.display = 'none';        
           },
