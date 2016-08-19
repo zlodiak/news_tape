@@ -49,8 +49,6 @@ APP.NewsTapeView = Backbone.View.extend({
 APP.NewsUnitView = Backbone.View.extend({  
 
   initialize: function(model) {   
-    self = this; 
-
     this.model = model.model;
   },
 
@@ -70,7 +68,7 @@ APP.NewsUnitView = Backbone.View.extend({
 
   events: {
     'click': function() {   
-      self.openModal();
+      this.openModal();
     }
   },
 
@@ -104,7 +102,6 @@ APP.NewsModalView = Backbone.View.extend({
 
   render: function () {  
     $('#modalwindow').html(this.template({
-      id: this.model.cid,
       title: this.model.get('title'),
       description: this.model.get('description'),
       poster: this.model.get('poster')

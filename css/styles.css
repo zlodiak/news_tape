@@ -350,6 +350,11 @@ input:-moz-placeholder {
 
 
 /********************************************************************************************* news */
+.news:hover{
+  background: #ddd;
+  transition: 0.5s;
+}
+
 /* 667 horiz iphone6 */  
 .news{
   position: relative;
