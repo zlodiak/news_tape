@@ -18,7 +18,6 @@ APP.NewsTapeView = Backbone.View.extend({
 
   events: {
     'click #filterTitleField': function(e) {   
-      e.preventDefault()
       console.log('filterTitleField')
     }
   },  
