@@ -510,6 +510,7 @@ input:-moz-placeholder {
 .modalwindow{
   padding: 50px 20px 20px;
   position: relative;
+  margin: 0 auto;
 }
 
   .modalwindow .close_btn{

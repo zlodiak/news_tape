@@ -87,8 +87,22 @@ APP.NewsUnitView = Backbone.View.extend({
   },
 
   openModal: function() { console.log('openModal')
-    var newsModalView = new APP.NewsModalView(this.model);
-    newsModalView.show(555, ['dfsdsdf']);
+    var newsModalView = new APP.NewsModalView(this.model),
+        widthWindow = window.innerWidth,
+        widthModal,
+        maxWidth = 550,
+        paddingsWidth = 40;
+
+    console.log(widthWindow);
+
+    if(widthWindow > 768) {
+      widthModal = maxWidth;
+    } else {
+      widthModal = widthWindow - paddingsWidth;
+    };
+
+      
+    newsModalView.show(widthModal, ['dfsdsdf']);
   }
 
 });
