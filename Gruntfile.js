@@ -38,6 +38,18 @@ module.exports = function(grunt) {
       }
     },
 
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'css',
+          ext: '.min.css'
+        }]
+      }
+    },    
+
     watch: {
       scripts: {
         files: [
@@ -50,15 +62,23 @@ module.exports = function(grunt) {
         options: {
           spawn: false,
         },
-      }
+      },
+      styles: {
+        files: ['css/*.css'],
+        tasks: ['uglify', 'cssmin'],
+        options: {
+          spawn: false,
+        },
+      }      
     }        
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');  
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'watch']);
+  grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'cssmin', 'watch']);
 
 };
