@@ -10,7 +10,9 @@ module.exports = function(grunt) {
       dist: {
         src: [
           'js/project/models/models.js', 
-          'js/project/views/newsTapeView.js', 
+          'js/project/views/NewsTapeView.js', 
+          'js/project/views/NewsUnitView.js', 
+          'js/project/views/NewsModalView.js', 
           'js/project/collections/collections.js', 
           'js/project/config.js'
         ],

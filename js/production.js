@@ -67,10 +67,7 @@ APP.NewsModel = Backbone.Model.extend({
     // console.log(this.collection);
   }  
 
-});
-
-
-APP.NewsUnitView = Backbone.View.extend({  
+});;APP.NewsUnitView = Backbone.View.extend({  
 
   initialize: function(news) {   
     this.model = news.model;
@@ -120,10 +117,7 @@ APP.NewsUnitView = Backbone.View.extend({
     newsModalView.show(widthModal);
   }
 
-});
-
-
-APP.NewsModalView = Backbone.View.extend({  
+});;APP.NewsModalView = Backbone.View.extend({  
 
   initialize: function(model) {   
     this.model = model;
