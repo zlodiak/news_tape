@@ -524,7 +524,7 @@ input:-moz-placeholder {
 }
 
 .modalwindow{
-  padding: 50px 20px 20px;
+  padding: 70px 20px 20px;
   position: relative;
   margin: 0 auto;
   overflow: auto;
@@ -569,7 +569,11 @@ input:-moz-placeholder {
     }
 
   .modalwindow .extras_modal{
-    padding-top: 40px;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
   }
 
     .extras_modal .like_elem{
