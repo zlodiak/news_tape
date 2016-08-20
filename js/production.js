@@ -88,7 +88,7 @@ APP.NewsModel = Backbone.Model.extend({
   },
 
   cutText: function(text, symbolsCnt) {
-    var cutText = text.substring(0, symbolsCnt);
+    var cutText = text.substring(0, symbolsCnt);    
     cutText += '...';
 
     return cutText;
