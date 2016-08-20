@@ -16,11 +16,6 @@
   <body>
     <div class="news_tape_box" id="newsTapeBox"></div>
 
-    <script src="js/libs/jquery/jquery.2.min.js"></script>    
-    <script src="js/libs/underscore-min.js"></script>
-    <script src="js/libs/backbone-min.js"></script>
-    <script src="js/libs/backbone.localStorage-min.js"></script>
-
     <script type="text/template" id="newsModalTpl">
       <div class="modalwindow">
         <div class="close_btn" id="closeBtn">Закрыть</div>
@@ -32,8 +27,7 @@
         </div>
 
         <div class="extras_modal">
-          <div class="like_elem <%= likeState %>" id="likeElem"></div>
-          
+          <div class="like_elem <%= likeState %>" id="likeElem"></div>          
         </div>
       </div>
     </script>
@@ -60,20 +54,27 @@
       </header>
 
       <div id="newsList" class="news_list"></div>
-    </script>    
+    </script>       
 
     <script>
       window.APP = window.APP || {};
     </script>
 
-    <script src="js/project/config.js"></script> 
+    <script src="js/libs/jquery/jquery.2.min.js"></script>    
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/libs/backbone-min.js"></script>   
 
-    <script src="js/project/models/models.js"></script> 
-    <script src="js/project/views/newsTapeView.js"></script>     
-    <script src="js/project/collections/collections.js"></script> 
+    <script src="js/production.js"></script>   
+
+    <!-- <script src="js/project/config.js"></script>  -->
+    <!-- <script src="js/project/models/models.js"></script>  -->
+   <!--  <script src="js/project/views/newsTapeView.js"></script>     --> 
+    <!-- <script src="js/project/collections/collections.js"></script>  -->
 
     <script>
       var app = new APP.NewsTapeView({el: '#newsTapeBox'});
-    </script>
+    </script>    
+
+
   </body>
 </html>
