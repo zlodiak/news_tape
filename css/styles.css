@@ -11,11 +11,15 @@ INFO:
 */	
 
 
+/*
 COLORS SET:
   grey:   #d6dee5
   blue:   #2c9ed5
   red:    #f00
   black:  #252525
+
+*/
+
 
 
 /********************************************************************************************** COMMON_STYLES */
@@ -82,8 +86,14 @@ input:-moz-placeholder {
 
 /********************************************************************************************* GLOBAL_layout */
 .news_tape_box{
-  max-width: 600px;
+  width: 600px;
   margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .news_tape_box{
+    width: auto;
+  }
 }
 
 /********************************************************************************************* header */
@@ -415,7 +425,8 @@ input:-moz-placeholder {
 
       margin-bottom: 5px;
       overflow: hidden;
-      max-height: 56px;
+      max-height: 25px;
+
     }
 
     .news_short_text{
