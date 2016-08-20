@@ -2,7 +2,7 @@ APP.NewsTapeView = Backbone.View.extend({
 
   initialize: function() {   
     this.collection = new APP.NewsModelsCollection();  
-    this._fillCollection();
+    this.fillCollection();
     this.filteredCollection = new APP.NewsModelsCollection(this.collection.toJSON());
         
     this.render();
@@ -12,25 +12,24 @@ APP.NewsTapeView = Backbone.View.extend({
 
   render: function () {  
     this.$el.html(this.template());    
-    this._createNewsUnits();
+    this.createNewsUnits();
 
     return this;
   },
 
   events: {
-    'keyup #filterTitleField': '_search'
+    'keyup #filterTitleField': 'search'
   },  
 
-  _search: function(e){  
+  search: function(e){  
     var letters = $("#filterTitleField").val();
     var filteredArray = this.collection.search(letters);
 
     this.filteredCollection.reset(filteredArray);
-    console.log(this.filteredCollection.models);
-    this._createNewsUnits();
+    this.createNewsUnits();
   },    
 
-  _createNewsUnits: function () {  
+  createNewsUnits: function () {  
     this.$('#newsList').html('');
 
     this.filteredCollection.each(function(news) {
@@ -39,7 +38,7 @@ APP.NewsTapeView = Backbone.View.extend({
     }, this);    
   },
 
-  _fillCollection: function () {  
+  fillCollection: function () {  
     var self = this;
 
     $.each(APP.CONFIG.values, function(key, val) {    
