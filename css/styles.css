@@ -27,7 +27,7 @@ html, body, div, h1, h2, h3, h4, h5, h6, a, a img, p, ul, ol, li, span, fieldset
   border: none;
   margin: 0; 
   outline: none;  
-  padding: 0;
+  padding: 0; 
   /*overflow: hidden;*/
 }
 
@@ -39,7 +39,7 @@ body{
   height:100%;  
   margin: 0 auto;
   position: relative;
-  background: #d6dee5;
+  background: #d6dee5; 
 
   font: 14px Helvetica, sans-serif;
 } 
