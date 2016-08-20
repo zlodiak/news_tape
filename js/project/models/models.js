@@ -6,8 +6,6 @@ APP.NewsModel = Backbone.Model.extend({
     poster: undefined,
     description: undefined,
     likeState: true
-  },
-
-  localStorage: new Backbone.LocalStorage('newsTapeList') 
+  }
   
 });  

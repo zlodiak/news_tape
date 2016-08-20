@@ -1,5 +1,5 @@
 APP.NewsModelsCollection = Backbone.Collection.extend({
-
+  
   model: APP.NewsModel,
 
   search: function(letters) {
@@ -11,8 +11,6 @@ APP.NewsModelsCollection = Backbone.Collection.extend({
     });
 
     return filtered;
-  },
+  }
 
-  localStorage: new Backbone.LocalStorage('newsTapeList') 
-  
 });
