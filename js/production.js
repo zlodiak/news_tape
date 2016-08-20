@@ -1,4 +1,5 @@
 APP.NewsModel = Backbone.Model.extend({
+
   defaults: { 
     id: undefined,
     title: undefined,
@@ -6,6 +7,7 @@ APP.NewsModel = Backbone.Model.extend({
     description: undefined,
     likeState: true
   }
+  
 });  ;APP.NewsTapeView = Backbone.View.extend({  
 
   initialize: function() {   
@@ -216,6 +218,7 @@ APP.NewsModel = Backbone.Model.extend({
 });
 
 ;APP.NewsModelsCollection = Backbone.Collection.extend({
+  
   model: APP.NewsModel,
 
   search: function(letters) {
@@ -227,7 +230,8 @@ APP.NewsModel = Backbone.Model.extend({
     });
 
     return filtered;
-  } 
+  }
+
 });;APP.CONFIG = {
   "headers": {
     "title":{"title":"Заголовок","type":"text"},

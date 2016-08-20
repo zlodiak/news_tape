@@ -1,7 +1,7 @@
 /* 
 INFO: 
 	project: news tape
-	browsers: opera/chrome/FF/ie9/safari + mobiles
+	browsers: opera/chrome/FF/safari + mobiles
 	width: mobile
 	columns: 
 	markup: Sergey Kalinin 08/2016 (prozaik81-2@yandex.ru)
@@ -510,12 +510,6 @@ input:-moz-placeholder {
 @media (max-width: 375px) {
 
 }
-
-
-
-
-/****************************************************************************** GLOBAL_layout */
-
 
 
 
