@@ -1,9 +1,9 @@
 APP.NewsModel = Backbone.Model.extend({
-  defaults:{
-    "id": null,
-    "title": "",
-    "poster": "",
-    "description":"",
-    "likeState": true
+  defaults: { 
+    id: undefined,
+    title: undefined,
+    poster: undefined,
+    description: undefined,
+    likeState: true
   }
 });  

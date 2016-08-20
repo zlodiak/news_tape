@@ -1,10 +1,10 @@
 APP.NewsModel = Backbone.Model.extend({
-  defaults:{
-    "id": null,
-    "title": "",
-    "poster": "",
-    "description":"",
-    "likeState": true
+  defaults: { 
+    id: undefined,
+    title: undefined,
+    poster: undefined,
+    description: undefined,
+    likeState: true
   }
 });  ;APP.NewsTapeView = Backbone.View.extend({  
 
@@ -55,7 +55,7 @@ APP.NewsModel = Backbone.Model.extend({
       // console.log(val.poster);
 
       var newsModel = new APP.NewsModel({
-        id: key.replace('id', ''),
+        id: parseInt(key.replace('id', '')),
         title: val.title,
         description: val.description,
         poster: val.poster
