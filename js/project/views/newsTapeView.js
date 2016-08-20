@@ -98,7 +98,7 @@ APP.NewsUnitView = Backbone.View.extend({
     var newsModalView = new APP.NewsModalView(this.model),
         widthWindow = window.innerWidth,
         widthModal,
-        maxWidth = 750,
+        maxWidth = 500,
         paddingsWidth = 40;
 
     if(widthWindow > 768) {

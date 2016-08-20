@@ -11,8 +11,11 @@ INFO:
 */	
 
 
-
-
+COLORS SET:
+  grey:   #d6dee5
+  blue:   #2c9ed5
+  red:    #f00
+  black:  #252525
 
 
 /********************************************************************************************** COMMON_STYLES */
@@ -32,6 +35,7 @@ body{
   height:100%;  
   margin: 0 auto;
   position: relative;
+  background: #d6dee5;
 
   font: 14px Helvetica, sans-serif;
 } 
@@ -77,6 +81,10 @@ input:-moz-placeholder {
 }
 
 /********************************************************************************************* GLOBAL_layout */
+.news_tape_box{
+  max-width: 600px;
+  margin: 0 auto;
+}
 
 /********************************************************************************************* header */
 /* 667 horiz iphone6 */  
@@ -374,7 +382,7 @@ input:-moz-placeholder {
 
 /********************************************************************************************* news */
 .news:hover{
-  background: #ddd;
+  background: #d6dee5;
   transition: 0.5s;
 }
 
