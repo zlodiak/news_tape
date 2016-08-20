@@ -36,13 +36,29 @@ module.exports = function(grunt) {
           dest: 'images/production/'
         }]
       }
-    }    
+    },
+
+    watch: {
+      scripts: {
+        files: [
+          'js/project/*.js',
+          'js/project/collections/*.js',
+          'js/project/models/*.js',
+          'js/project/views/*.js'
+        ],
+        tasks: ['concat', 'uglify'],
+        options: {
+          spawn: false,
+        },
+      }
+    }        
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['concat', 'uglify', 'imagemin']);
+  grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'watch']);
 
 };
