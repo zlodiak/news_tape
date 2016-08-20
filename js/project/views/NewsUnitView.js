@@ -9,9 +9,11 @@ APP.NewsUnitView = Backbone.View.extend({
   template: _.template($('#newsUnitTpl').html()),
 
   render: function () {  
+    var cutLettersCnt = 25;
+
     this.$el.html(this.template({
       title: this.model.get('title'),
-      description: this.cutText(this.model.get('description'), 25),
+      description: this.cutText(this.model.get('description'), cutLettersCnt),
       poster: this.model.get('poster')
     }));   
 
@@ -19,13 +21,11 @@ APP.NewsUnitView = Backbone.View.extend({
   },
 
   events: {
-    'click': function() {   
-      this.openModal();
-    }
+    'click': 'openModal'
   },
 
   cutText: function(text, symbolsCnt) {
-    var cutText = text.substring(0, symbolsCnt);
+    var cutText = text.substring(0, symbolsCnt);    
     cutText += '...';
 
     return cutText;

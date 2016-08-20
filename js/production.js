@@ -30,8 +30,8 @@ APP.NewsModel = Backbone.Model.extend({
   },  
 
   search: function(e){  
-    var letters = $("#filterTitleField").val();
-    var filteredArray = this.collection.search(letters);
+    var letters = $("#filterTitleField").val(), 
+        filteredArray = this.collection.search(letters);
 
     this.filteredCollection.reset(filteredArray);
     this.createNewsUnits();
@@ -50,10 +50,6 @@ APP.NewsModel = Backbone.Model.extend({
     var self = this;
 
     $.each(APP.CONFIG.values, function(key, val) {    
-      // console.log(val.title);
-      // console.log(val.description);
-      // console.log(val.poster);
-
       var newsModel = new APP.NewsModel({
         id: parseInt(key.replace('id', '')),
         title: val.title,
@@ -63,8 +59,6 @@ APP.NewsModel = Backbone.Model.extend({
 
       self.collection.add(newsModel);
     });
-
-    // console.log(this.collection);
   }  
 
 });;APP.NewsUnitView = Backbone.View.extend({  
@@ -78,9 +72,11 @@ APP.NewsModel = Backbone.Model.extend({
   template: _.template($('#newsUnitTpl').html()),
 
   render: function () {  
+    var cutLettersCnt = 25;
+
     this.$el.html(this.template({
       title: this.model.get('title'),
-      description: this.cutText(this.model.get('description'), 25),
+      description: this.cutText(this.model.get('description'), cutLettersCnt),
       poster: this.model.get('poster')
     }));   
 
@@ -88,9 +84,7 @@ APP.NewsModel = Backbone.Model.extend({
   },
 
   events: {
-    'click': function() {   
-      this.openModal();
-    }
+    'click': 'openModal'
   },
 
   cutText: function(text, symbolsCnt) {
