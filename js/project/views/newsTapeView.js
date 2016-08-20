@@ -47,6 +47,7 @@ APP.NewsTapeView = Backbone.View.extend({
       // console.log(val.poster);
 
       var newsModel = new APP.NewsModel({
+        id: key.replace('id', ''),
         title: val.title,
         description: val.description,
         poster: val.poster
