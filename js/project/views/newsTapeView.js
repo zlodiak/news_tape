@@ -64,8 +64,8 @@ APP.NewsTapeView = Backbone.View.extend({
 
 APP.NewsUnitView = Backbone.View.extend({  
 
-  initialize: function(model) {   
-    this.model = model.model;
+  initialize: function(news) {   
+    this.model = news.model;
   },
 
   className: 'news',
@@ -100,16 +100,16 @@ APP.NewsUnitView = Backbone.View.extend({
         widthWindow = window.innerWidth,
         widthModal,
         maxWidth = 500,
-        paddingsWidth = 40;
+        paddingsWidth = 40,
+        maxWidthMobile = 768;
 
-    if(widthWindow > 768) {
+    if(widthWindow > maxWidthMobile) {
       widthModal = maxWidth;
     } else {
       widthModal = widthWindow - paddingsWidth;
     };
-
       
-    newsModalView.show(widthModal, ['dfsdsdf']);
+    newsModalView.show(widthModal);
   }
 
 });
@@ -119,8 +119,8 @@ APP.NewsModalView = Backbone.View.extend({
 
   initialize: function(model) {   
     this.model = model;
-    _block = null;
-    _win = null;   
+    block = null;
+    win = null;   
   },
 
   template: _.template($('#newsModalTpl').html()),
@@ -156,45 +156,47 @@ APP.NewsModalView = Backbone.View.extend({
   initOverlayElem: function() {
     var self = this;
 
-    var _block = document.getElementById('blockscreen'); 
+    var block = document.getElementById('blockscreen'); 
 
-    if (!_block) {
+    if (!block) {
       var parent = document.getElementsByTagName('body')[0],
           obj = parent.firstChild; 
 
-      _block = document.createElement('div'); 
-      _block.id = 'blockscreen'; 
-      parent.insertBefore(_block, obj);
+      block = document.createElement('div'); 
+      block.id = 'blockscreen'; 
+      parent.insertBefore(block, obj);
 
-      _block.onclick = function() { self.close() };         
+      block.onclick = function() { self.close() };         
     }
 
-    _block.style.display = 'inline';     
+    block.style.display = 'inline';     
   },
 
   initModalElem: function(width, html) {
     var self = this;
 
-    _win = document.getElementById('modalwindow'); 
+    win = document.getElementById('modalwindow'); 
 
-    if (!_win) {
-        var parent = document.getElementsByTagName('body')[0];
-        var obj = parent.firstChild;
-        _win = document.createElement('div');
-        _win.id = 'modalwindow';    
-        parent.insertBefore(_win, obj);
+    if(!win) {
+      var parent = document.getElementsByTagName('body')[0];
+      var obj = parent.firstChild;
+
+      win = document.createElement('div');
+      win.id = 'modalwindow';   
+       
+      parent.insertBefore(win, obj);
     }
 
-    _win.style.width = width + 'px'; 
-    _win.style.display = 'inline'; 
+    win.style.width = width + 'px'; 
+    win.style.display = 'inline'; 
     
-    _win.innerHTML = html; 
+    win.innerHTML = html; 
 
-    _win.style.left = '50%'; 
-    _win.style.top = '5%'; 
+    win.style.left = '50%'; 
+    win.style.top = '5%'; 
 
-    _win.style.marginTop = -(_win.offsetHeight / 2) + 'px'; 
-    _win.style.marginLeft = -(width / 2) + 'px';
+    win.style.marginTop = -(win.offsetHeight / 2) + 'px'; 
+    win.style.marginLeft = -(width / 2) + 'px';
 
     this.render();
 
